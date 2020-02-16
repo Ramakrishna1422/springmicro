@@ -1,0 +1,36 @@
+# intellij idea files 
+.idea/*
+*.iml
+*.ipr
+*.iws
+
+# OS generated files 
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+dump.rdb
+
+# gradle files 
+/build/**
+.gradle
+
+# Eclipse
+*.classpath
+*.project
+*.settings
+/bin/*
+
+# Do not store the logs folder and its contents
+/logs/*
+
+out/*
+
+logback-test.xml
+
+nohup.out
+

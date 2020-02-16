@@ -1,0 +1,5 @@
+rootProject.name = 'springmicro'
+
+include 'adminService'
+include 'pixelService'
+include 'routeService'
