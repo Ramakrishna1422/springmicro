@@ -3,6 +3,7 @@ package com.lifesight.service.manager;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.lifesight.service.config.RateLimiter;
+import com.lifesight.service.constants.Durations;
 import com.lifesight.service.constants.RateLimitType;
 import com.lifesight.service.filter.AbstractFilter;
 import com.lifesight.service.generated.ApiLimit;
@@ -84,11 +85,11 @@ public class RateLimiterManager {
 
     private long getInterval(String granularity) {
         switch (granularity) {
-            case "second" :
+            case Durations.SECONDS :
                 return 1;
-            case "minute" :
+            case Durations.MINITUES :
                 return 60;
-            case "hour" :
+            case Durations.HOURS :
                 return 60 * 60;
         }
         return 0;
