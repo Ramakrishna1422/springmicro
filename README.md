@@ -106,28 +106,27 @@ There are 3 modules.
  - Always checks available token is lesser than limited token.
  - If no token available respond to client with rate limit exceeded.
  - If time difference beyond the actual inverval time then refills the tokens.
-    
-```
-public boolean consume() {
-     long now = System.currentTimeMillis();
-     double diff = ((now - lastTimeStamp) / 1000);
-     if( diff < interval) {
-         if(available < limit) {
-             synchronized(this) {
-                 available++;
-                 lastTimeStamp = now;
-                 return true;
-             }
-         } else {
-             return false;
-         }
-     } else {
-         available = 0;
-         lastTimeStamp = now;
-         available++;
-         return true;
-     }
- }
+ ```
+      public boolean consume() {
+           long now = System.currentTimeMillis();
+           double diff = ((now - lastTimeStamp) / 1000);
+           if( diff < interval) {
+               if(available < limit) {
+                   synchronized(this) {
+                       available++;
+                       lastTimeStamp = now;
+                       return true;
+                   }
+               } else {
+                   return false;
+               }
+           } else {
+               available = 0;
+               lastTimeStamp = now;
+               available++;
+               return true;
+           }
+       }
  ```
     
 ## Usage
@@ -135,8 +134,7 @@ public boolean consume() {
 Gradle Application:
     - Pixel / Admin / Route Services:
 
-         ```
             ./gradlew clean build
             ./gradlew bootRun
-        ```
- ####Note: Pixel and Admin service must run before start the route service.
+
+ #### Note: Pixel and Admin service must run before start the route service.
