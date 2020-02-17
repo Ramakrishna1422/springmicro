@@ -28,10 +28,14 @@ There are 3 modules.
    
 ### 3. Route Service
  - A routing service to route the api requests to corresponding micro service.
- - Also this service usage the configuration data to rate limit the requests.
- - Below is the sample json,
-    
-
+ - Also this service usage the configuration data to rate limit the requests for the routing services.
+ 
+ ### configuration
+     - Post configuration request to http://localhost:8673/updateRatelimits 
+     - configure in resources with file name, ratelimit-configuration.json
+     
+ - Below is the sample json for configuration,
+ 
           [
               {
                 "service":"pixelService",
