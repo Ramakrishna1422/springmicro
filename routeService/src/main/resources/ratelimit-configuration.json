@@ -53,7 +53,7 @@
     "globalLimits":{
       "get":{
         "limit":"5",
-        "granularity":"second"
+        "granularity":"minite"
       },
       "post":{
         "limit":"20",
