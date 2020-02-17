@@ -1,7 +1,7 @@
 package com.lifesight.service.filter;
 
 import com.lifesight.service.config.RateLimiter;
-import com.lifesight.service.manager.RateLimiterManager;
+import com.lifesight.service.repository.RateLimiterRepository;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
 import lombok.extern.slf4j.Slf4j;
@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 public class LimitPreFilter extends AbstractFilter {
 
     @Autowired
-    private RateLimiterManager manager;
+    private RateLimiterRepository manager;
 
     @Override
     public String filterType() {
