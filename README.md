@@ -27,9 +27,9 @@ There are 3 modules.
    ```
    
 ### 3. Route Service
-    - A routing service to route the api requests to corresponding micro service.
-    - Also this service usage the configuration data to rate limit the requests.
-    - Below is the sample json,
+ - A routing service to route the api requests to corresponding micro service.
+ - Also this service usage the configuration data to rate limit the requests.
+ - Below is the sample json,
     
 
           [
@@ -100,44 +100,43 @@ There are 3 modules.
               }
             ]
 
-  Breif about the algorithm (sliding window token),
-    - First it checks the interval of the current and previous requested executed time. If difference lesser than actual interval then check for the token avaialability.
-    - Otherwise update the request execute time and consume the token.
-    - Always checks available token is lesser than limited token.
-    - If no token available respond to client with rate limit exceeded.
-    - If time difference beyond the actual inverval time then refills the tokens.
+### Breif about the algorithm (sliding window token),  
+ - First it checks the interval of the current and previous requested executed time. If difference lesser than actual interval then check for the token avaialability.
+ - Otherwise update the request execute time and consume the token.
+ - Always checks available token is lesser than limited token.
+ - If no token available respond to client with rate limit exceeded.
+ - If time difference beyond the actual inverval time then refills the tokens.
     
-  ```
-  public boolean consume() {
-        long now = System.currentTimeMillis();
-        double diff = ((now - lastTimeStamp) / 1000);
-        if( diff < interval) {
-            if(available < limit) {
-                synchronized(this) {
-                    available++;
-                    lastTimeStamp = now;
-                    return true;
-                }
-            } else {
-                return false;
-            }
-        } else {
-            available = 0;
-            lastTimeStamp = now;
-            available++;
-            return true;
-        }
-    }
-    ```
-
+```
+public boolean consume() {
+     long now = System.currentTimeMillis();
+     double diff = ((now - lastTimeStamp) / 1000);
+     if( diff < interval) {
+         if(available < limit) {
+             synchronized(this) {
+                 available++;
+                 lastTimeStamp = now;
+                 return true;
+             }
+         } else {
+             return false;
+         }
+     } else {
+         available = 0;
+         lastTimeStamp = now;
+         available++;
+         return true;
+     }
+ }
+ ```
+    
 ## Usage
 
 Gradle Application:
     - Pixel / Admin / Route Services:
-        ```
+
+         ```
             ./gradlew clean build
             ./gradlew bootRun
         ```
  ####Note: Pixel and Admin service must run before start the route service.
-
-
