@@ -14,11 +14,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
-import java.util.HashMap;
 
 
 @RunWith(SpringRunner.class)
@@ -32,7 +30,7 @@ public class PixelControllerTest {
     public void getAllPixels() throws Exception {
         RestTemplate restTemplate = new RestTemplate();
 
-        final String baseUrl = "http://localhost:" + randomServerPort + "/v1/getAllPixels";
+        final String baseUrl = "http://localhost:" + randomServerPort + "/getAllPixels";
         URI uri = new URI(baseUrl);
 
         ResponseEntity<String> result = restTemplate.getForEntity(uri, String.class);
@@ -45,7 +43,7 @@ public class PixelControllerTest {
     public void getPixelByName() throws Exception {
         RestTemplate restTemplate = new RestTemplate();
 
-        final String baseUrl = "http://localhost:" + randomServerPort + "/v1/getPixel/HD";
+        final String baseUrl = "http://localhost:" + randomServerPort + "/getPixel/HD";
         URI uri = new URI(baseUrl);
 
         ResponseEntity<Pixel> result = restTemplate.getForEntity(uri, Pixel.class);
@@ -58,7 +56,7 @@ public class PixelControllerTest {
     public void getPixelByInvalid() throws Exception {
         RestTemplate restTemplate = new RestTemplate();
 
-        final String baseUrl = "http://localhost:" + randomServerPort + "/v1/getPixel/4KDigital";
+        final String baseUrl = "http://localhost:" + randomServerPort + "/getPixel/4KDigital";
         URI uri = new URI(baseUrl);
 
         ResponseEntity<String> result = restTemplate.getForEntity(uri, String.class);
@@ -71,7 +69,7 @@ public class PixelControllerTest {
     public void dropPixel() throws Exception {
         RestTemplate restTemplate = new RestTemplate();
 
-        final String baseUrl = "http://localhost:" + randomServerPort + "/v1/dropPixel/FHD";
+        final String baseUrl = "http://localhost:" + randomServerPort + "/dropPixel/FHD";
 
         ResponseEntity<Pixel> result = restTemplate.exchange(baseUrl, HttpMethod.DELETE, null, Pixel.class);
 
@@ -83,7 +81,7 @@ public class PixelControllerTest {
     public void createPixel() throws Exception {
         RestTemplate restTemplate = new RestTemplate();
 
-        final String baseUrl = "http://localhost:" + randomServerPort + "/v1/createPixel";
+        final String baseUrl = "http://localhost:" + randomServerPort + "/createPixel";
         URI uri = new URI(baseUrl);
 
         Pixel pixel = new Pixel(2000, 2000, "4K");

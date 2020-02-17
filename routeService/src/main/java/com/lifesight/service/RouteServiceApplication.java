@@ -1,6 +1,6 @@
 package com.lifesight.service;
 
-import com.lifesight.service.filter.SimpleFilter;
+import com.lifesight.service.filter.LimitPreFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
@@ -16,7 +16,7 @@ public class RouteServiceApplication {
 
 
     @Bean
-    public SimpleFilter simpleFilter() {
-        return new SimpleFilter();
+    public LimitPreFilter simpleFilter() {
+        return new LimitPreFilter();
     }
 }
