@@ -27,7 +27,7 @@ public class AdminControllerTest {
     public void getAdminUsers() throws Exception {
         RestTemplate restTemplate = new RestTemplate();
 
-        final String baseUrl = "http://localhost:" + randomServerPort + "/v1/getAdmins";
+        final String baseUrl = "http://localhost:" + randomServerPort + "/getAdmins";
         URI uri = new URI(baseUrl);
 
         ResponseEntity<String> result = restTemplate.getForEntity(uri, String.class);
@@ -40,7 +40,7 @@ public class AdminControllerTest {
     public void getUserById() throws Exception {
         RestTemplate restTemplate = new RestTemplate();
 
-        final String baseUrl = "http://localhost:" + randomServerPort + "/v1/getUser/108";
+        final String baseUrl = "http://localhost:" + randomServerPort + "/getUser/108";
         URI uri = new URI(baseUrl);
 
         ResponseEntity<User> result = restTemplate.getForEntity(uri, User.class);
@@ -52,7 +52,7 @@ public class AdminControllerTest {
     public void getUserByInvalidId() throws Exception {
         RestTemplate restTemplate = new RestTemplate();
 
-        final String baseUrl = "http://localhost:" + randomServerPort + "/v1/getUser/11111";
+        final String baseUrl = "http://localhost:" + randomServerPort + "/getUser/11111";
         URI uri = new URI(baseUrl);
 
         ResponseEntity<String> result = restTemplate.getForEntity(uri, String.class);
@@ -65,7 +65,7 @@ public class AdminControllerTest {
     public void dropUser() throws Exception {
         RestTemplate restTemplate = new RestTemplate();
 
-        final String baseUrl = "http://localhost:" + randomServerPort + "/v1/dropUser/101";
+        final String baseUrl = "http://localhost:" + randomServerPort + "/dropUser/101";
         URI uri = new URI(baseUrl);
 
         ResponseEntity<User> result = restTemplate.exchange(baseUrl, HttpMethod.DELETE, null, User.class);

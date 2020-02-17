@@ -20,11 +20,10 @@ ext {
 
 dependencies {
     compileOnly 'org.projectlombok:lombok:1.16.0'
+    compile "com.google.code.gson:gson:2.8.5"
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-zuul'
-    testImplementation('org.springframework.boot:spring-boot-starter-test') {
-        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-    }
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
 
 dependencyManagement {
@@ -35,4 +34,7 @@ dependencyManagement {
 
 test {
     useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
 }
